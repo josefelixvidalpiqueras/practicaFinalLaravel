@@ -62,6 +62,13 @@ Route::middleware('auth')->group(function () {
     /* Ruta con la lógica de actualizar los datos del perfil del usuario Administrador en la base de datos */
     Route::put('admin/perfiles/{id}', 'PerfilController@perfilesUpdate')->name('perfiles.update')->middleware('is_admin');
 
+    /* RUTAS DE CUENTAS para usuarios ADMINISTRADOR */
+    /* Ruta al a la vista (blade) con el listado de Cuentas de los usuarios */
+    Route::get('admin/cuentas', 'CuentaController@cuentasIndex')->name('cuentas.index')->middleware('is_admin');
+
+    /* Ruta al a la vista (blade) con el listado de Cuentas de los usuarios */
+    Route::get('admin/cuentas/{id}', 'CuentaController@cuentasUpdate')->name('cuentas.update')->middleware('is_admin');
+
     /* CLIENTE */
     /* RUTAS DE PERFILES para usuarios CLIENTE */
     /* Ruta a la Vista (blade) del perfil del usuario */

@@ -35,40 +35,41 @@
                 @endif
                 <div class="card">
                     <div class="card-header text-center bg-dark text-white">
-                        <strong>MI PERFIL</strong>
-                        <a href="{{ route('perfiles.editCliente', auth()->user()->id) }}" class="btn btn-outline-light btn-sm float-end">Modificar Perfil</a>
+                        <strong>ADMINISTRAR CUENTAS</strong>
                     </div>
                     <div class="card-body col table-responsive bg-dark">
-                        <!-- Mostraremos el listado de datos del usuario en formato tabla -->
+                        <!-- Mostraremos el listado de cuentas de usuario en formato tabla -->
                         <table class="table table-hover table-sm table-dark text white">
                             <thead>
+                                <th>NIF</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
-                                <th>Contraseña</th>
-                                <th>NIF</th>
-                                <th>Dirección</th>
-                                <th>Teléfono</th>
+                                <th>Cuenta</th>
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
                                 <tr>
+                                    <td>
+                                        {{ $user->nif }}
+                                    </td>
                                     <td>
                                         {{ $user->name }}
                                     </td>
                                     <td>
                                         {{ $user->email }}
                                     </td>
-                                    <td>
-                                        ****
-                                    </td>
-                                    <td>
-                                        {{ $user->nif }}
-                                    </td>
-                                    <td>
-                                        {{ $user->direccion }}
-                                    </td>
-                                    <td>
-                                        {{ $user->telefono }}
+                                    <td class="d-grid">
+                                        <?php
+                                            if ($user->activo==0) {
+                                        ?>
+                                                <a href="{{ route('cuentas.update', $user->id) }}" class="btn btn-outline-success btn-sm border border-1 border-ligth">Activar</a>       
+                                        <?php
+                                            } else {
+                                        ?>
+                                                <a href="{{ route('cuentas.update', $user->id) }}" class="btn btn-outline-warning btn-sm border border-1 border-ligth">Desactivar</a>       
+                                        <?php
+                                            }
+                                        ?>
                                     </td>
                                 </tr>
                                 @endforeach 

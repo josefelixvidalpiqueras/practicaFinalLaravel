@@ -57,7 +57,7 @@
                                     <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Noticias</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Cuentas</a>
+                                    <a href="{{ url('/admin/cuentas') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Cuentas</a>
                                 </div>
                             <!-- Si el usuario logueado es NO es Administrador (se muestra el panel de Cliente) -->        
                             <?php

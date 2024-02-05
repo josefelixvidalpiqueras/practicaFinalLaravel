@@ -39,7 +39,7 @@
                         <a href="{{ route('perfiles.edit', auth()->user()->id) }}" class="btn btn-outline-light btn-sm float-end">Modificar Perfil</a>
                     </div>
                     <div class="card-body col table-responsive bg-dark">
-                        <!-- Mostraremos el listado de camisetas en formato tabla -->
+                        <!-- Mostraremos el listado de datos del usuario en formato tabla -->
                         <table class="table table-hover table-sm table-dark text white">
                             <thead>
                                 <th>Nombre</th>

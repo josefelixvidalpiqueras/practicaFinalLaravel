@@ -64,7 +64,7 @@
                                     <input type="text" name="telefono"  value="{{ $perfil->telefono }}" id="telefono" class="form-control bg-light" required>
                                 </div>
 
-                                <div class="col-6" style="margin-top: 35px;">
+                                <div class="col-12" style="margin-top: 35px;">
                                     <div class="row justify-content-between">
                                         <button type="submit" class="btn btn-dark btn-sm col-5 mt-3 ms-3">Guardar</button>
                                         <a href="{{ route('perfiles.indexCliente') }}" class="btn btn-secondary btn-sm float-end col-5 mt-3 me-3">Cancelar</a>
