@@ -6,7 +6,7 @@
         <!-- Referenciamos el CDN de Bootstrap y cargamos su script -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <title>Editando Camiseta</title>
+        <title>Editando Perfil</title>
         <style type="text/css">		
             img {
                 border: 1px solid white;
@@ -32,7 +32,7 @@
                 <div class="col-md-12 mt-5">
                     <div class="card">
                         <div class="card-header text-center bg-dark text-white">
-                            <strong>EDITAR CAMISETA</strong>
+                            <strong>EDITAR PERFIL</strong>
                         </div>
                         <div class="card-body row">
                             <!-- Formulario de inserción de nueva camiseta -->

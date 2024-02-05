@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 /* Si entras a la ruta "/" se ejecuta la función "welcome" del controlador "CamisetaController.php" */
 Route::get('/', 'CamisetaController@welcome')->name('welcome');
 
+/* Si entras a la ruta "/" se ejecuta la función "welcomeDetalles" del controlador "CamisetaController.php" */
+Route::get('/detalles', 'CamisetaController@welcomeDetalles')->name('welcome-detalles');
+
 /* Todas las rutas de Auth (middleware) importadas y activas */
 Auth::routes();
 

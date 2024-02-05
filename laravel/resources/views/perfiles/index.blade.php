@@ -25,10 +25,10 @@
     </style>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mt-5">
+            <div class="col-md-12">
                 <!-- Si existe algún mensaje de tipo 'info' lo mostramos dentro de un "alert" de Bootstrap -->
                 @if(session('info'))
-                    <div class="alert alert-success alert-dismissible fade show mb-2 text-center">
+                    <div class="alert alert-success alert-dismissible fade show mt-5 mb-2 text-center">
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         <strong><em>{{ session('info') }}</em></strong>
                     </div>                     
