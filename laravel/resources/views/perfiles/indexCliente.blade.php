@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-header text-center bg-dark text-white">
                         <strong>MI PERFIL</strong>
-                        <a href="{{ route('perfiles.edit', auth()->user()->id) }}" class="btn btn-outline-light btn-sm float-end">Modificar Perfil</a>
+                        <a href="{{ route('perfiles.editCliente', auth()->user()->id) }}" class="btn btn-outline-light btn-sm float-end">Modificar Perfil</a>
                     </div>
                     <div class="card-body col table-responsive bg-dark">
                         <!-- Mostraremos el listado de camisetas en formato tabla -->

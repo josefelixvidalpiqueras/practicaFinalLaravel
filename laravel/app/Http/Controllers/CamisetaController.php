@@ -12,25 +12,27 @@ class CamisetaController extends Controller
     
     /**
      * Función que muestra el listado de las primeras 8 camisetas en la blade 'welcome', ordenadas Descendentemente por DESCUENTO (8 mejores ofertas).
+     * Las camisetas sin stock no se mostrarán en la tienda.
      * Los clientes (incluso sin autenticar) pueden verla.
      */
     public function welcome() {
-        $camisetas = DB::table('camisetas')->orderBy('descuento', 'DESC')->limit(8)->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
+        $camisetas = DB::table('camisetas')->where('stock', '<>', 0)->orderBy('descuento', 'DESC')->limit(8)->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
         return view('welcome', compact('camisetas')); /* Ejecutamos la consulta al recargar la vista */
     }
 
     /**
      * Función que muestra el listado con todos los detalles de todas las camisetas en venta.
+     * Las camisetas sin stock no se mostrarán en la Tienda.
      * Los clientes (incluso sin autenticar) pueden verla.
      */
     public function welcomeDetalles() {
-        $camisetas = DB::table('camisetas')->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
+        $camisetas = DB::table('camisetas')->where('stock', '<>', 0)->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
         return view('welcome-detalles', compact('camisetas')); /* Ejecutamos la consulta al recargar la vista */
     }
 
 
     /* LÓGICA DE ADMINISTRADOR */
-    
+        
     /**
      * Función que muestra el listado de camisetas con las opciones extra del Administrador
      */

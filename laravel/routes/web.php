@@ -31,6 +31,8 @@ Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHom
 /* RUTAS PROTEGIDAS con autenticación */
 /* Grupo de rutas sólo accesibles una vez logueado con un usuario válido del sistema */
 Route::middleware('auth')->group(function () {
+    
+    /* ADMINISTRADOR */
     /* RUTAS DE CAMISETAS para usuarios ADMINISTRADOR */
     /* Ruta a la Vista (blade) principal de Camisetas */
     Route::get('admin/camisetas', 'CamisetaController@camisetasIndex')->name('camisetas.index')->middleware('is_admin');
@@ -59,5 +61,16 @@ Route::middleware('auth')->group(function () {
 
     /* Ruta con la lógica de actualizar los datos del perfil del usuario Administrador en la base de datos */
     Route::put('admin/perfiles/{id}', 'PerfilController@perfilesUpdate')->name('perfiles.update')->middleware('is_admin');
+
+    /* CLIENTE */
+    /* RUTAS DE PERFILES para usuarios CLIENTE */
+    /* Ruta a la Vista (blade) del perfil del usuario */
+    Route::get('perfiles', 'PerfilController@perfilesIndexCliente')->name('perfiles.indexCliente');
+
+    /* Ruta que recoge el "id" de perfil del usuario Cliente a editar pasado por el botón "Modificar Perfil" */
+    Route::get('perfiles/{id}/edit', 'PerfilController@perfilesEditCliente')->name('perfiles.editCliente');
+
+    /* Ruta con la lógica de actualizar los datos del perfil del usuario Cliente en la base de datos */
+    Route::put('perfiles/{id}', 'PerfilController@perfilesUpdateCliente')->name('perfiles.updateCliente');
 
 });

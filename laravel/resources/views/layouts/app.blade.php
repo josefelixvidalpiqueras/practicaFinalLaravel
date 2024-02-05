@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand me-5" href="{{ url('/') }}">
                     Ir a VegaShop
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -67,7 +67,10 @@
                                     <a href="{{ url('/home') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Home</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Link2</a>
+                                    <a href="{{ url('/perfiles') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Perfil</a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Historial</a>
                                 </div>
                             <?php    
                                 }                    
