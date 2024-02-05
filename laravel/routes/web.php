@@ -18,23 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-/* RUTAS DE CADA HOME (página principal de cada tipo de usuario al hacer login) */
-/* Ruta que ejecuta la función index (User Home) del HomeController.php */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/* Ruta que ejecuta la función adminHome (Admin Home) del HomeController.php */
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-
-
-/* RUTAS PÚBLICAS EN LA TIENDA */
-/* Si entras a la ruta "/" se ejecuta la función "welcome" del controlador "CamisetaController.php" */
-Route::get('/', 'CamisetaController@welcome')->name('welcome');
-
-/* Si entras a la ruta "/detalles" se ejecuta la función "welcomeDetalles" del controlador "CamisetaController.php" */
-Route::get('/detalles', 'CamisetaController@welcomeDetalles')->name('welcome-detalles');
-
-/* Si entras a la ruta "/{id}" (al pinchar una imagen de camiseta) se ejecuta la función "welcomeElegida" del controlador "CamisetaController.php" */
-Route::get('/{id}', 'CamisetaController@welcomeElegida')->name('welcome-elegida');
 
 /* RUTAS PROTEGIDAS con autenticación */
 /* Grupo de rutas sólo accesibles una vez logueado con un usuario válido del sistema */
@@ -90,3 +74,23 @@ Route::middleware('auth')->group(function () {
     Route::put('perfiles/{id}', 'PerfilController@perfilesUpdateCliente')->name('perfiles.updateCliente');
 
 });
+
+
+
+/* RUTAS DE CADA HOME (página principal de cada tipo de usuario al hacer login) */
+/* Ruta que ejecuta la función index (User Home) del HomeController.php */
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/* Ruta que ejecuta la función adminHome (Admin Home) del HomeController.php */
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+
+/* RUTAS PÚBLICAS EN LA TIENDA */
+/* Si entras a la ruta "/" se ejecuta la función "welcome" del controlador "CamisetaController.php" */
+Route::get('/', 'CamisetaController@welcome')->name('welcome');
+
+/* Si entras a la ruta "/detalles" se ejecuta la función "welcomeDetalles" del controlador "CamisetaController.php" */
+Route::get('/detalles', 'CamisetaController@welcomeDetalles')->name('welcome-detalles');
+
+/* Si entras a la ruta "/{id}" (al pinchar una imagen de camiseta) se ejecuta la función "welcomeElegida" del controlador "CamisetaController.php" */
+Route::get('/{id}', 'CamisetaController@welcomeElegida')->name('welcome-elegida');
