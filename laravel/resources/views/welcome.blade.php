@@ -34,7 +34,7 @@
                                             </strong>
                                         </td>  
                                         <td>
-                                            <img class="ms-3" src="{{ asset($camiseta->imagen) }}" style="width:25px; border-radius:5px;">
+                                            <a href="{{ route('welcome-elegida', $camiseta->id) }}"><img class="ms-3" src="{{ asset($camiseta->imagen) }}" style="width:25px; border-radius:5px;"></a>
                                         </td>
                                         <td>
                                             {{ $camiseta->stock }} <?php echo" uds"; ?>

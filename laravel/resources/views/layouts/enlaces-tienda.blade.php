@@ -34,15 +34,24 @@
                 text-decoration: none;
                 color: #343a40;
             }            
-            table img {
+            table td img {
                 border: 1px solid white;
                 transition: 0.75s ease;
             }
-            table img:hover {
+            table td img:hover {
                 scale: 5;
                 transform: rotate(360deg) translateX(3px);
                 border: 1px solid grey;
             }	
+            th img {
+                border: 2px solid white;
+                transition: 0.5s ease;
+            }
+            th img:hover {
+                border: 2px solid grey;
+                transition: 0.5s ease;
+                scale: 1.05;
+            }
             .table-responsive {
                 padding-bottom: 50px;
             }
@@ -84,15 +93,34 @@
                     @if (Route::has('login'))
                         @auth
                             @if (auth()->user()->is_admin==1)
-                                <!-- Rutas centrales del navbar (Administradores) -->
+                                <!-- Botón carrito Administrador logueado -->
+                                <a class="me-3" href="" title="Carro de compras">
+                                    <button class="btn btn-outline-secondary me-3 position-relative" title="Carro de compras" type="button">
+                                        <i class="bi bi-cart4" style="color: black;"></i>
+                                        <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">0</span>
+                                    </button>
+                                </a>
                                 <a href="{{ url('/admin/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-sm-none d-grid">Home</a>
                                 <a href="{{ url('/admin/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-none d-sm-block d-grid">Volver a mi Home</a>
                             @else
-                                <!-- Rutas centrales del navbar (Clientes) -->
+                                <!-- Botón carrito Cliente logueado -->
+                                <a class="me-3" href="" title="Carro de compras">
+                                    <button class="btn btn-outline-secondary me-3 position-relative" title="Carro de compras" type="button">
+                                        <i class="bi bi-cart4" style="color: black;"></i>
+                                        <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">0</span>
+                                    </button>
+                                </a>
                                 <a href="{{ url('/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-sm-none d-grid">Home</a>
                                 <a href="{{ url('/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-none d-sm-block d-grid">Volver a mi Home</a>
                             @endif                    
                         @else
+                            <!-- Botón carrito sin estar logueado (te redirige al login antes de la lógica) -->
+                            <a class="me-3" href="" title="Carro de compras">
+                                <button class="btn btn-outline-secondary me-3 position-relative" title="Carro de compras" type="button">
+                                    <i class="bi bi-cart4" style="color: black;"></i>
+                                    <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">0</span>
+                                </button>
+                            </a>
                             <!-- Botones Log in y Register -->
                             <a href="{{ route('login') }}" class="nav-link me-3 text-dark d-grid" style="font-size: 0.9em;">Login</a>
                             @if (Route::has('register'))

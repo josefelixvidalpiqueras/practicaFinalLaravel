@@ -14,7 +14,7 @@
 
         }	
         .table-responsive {
-            padding-bottom: 50px;
+            padding-bottom: 55px;
         }
         .card {
             border-radius: 10px;

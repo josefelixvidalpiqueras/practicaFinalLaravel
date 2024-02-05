@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;  /* Importamos para poder usar este tipo de c
 class CamisetaController extends Controller
 {
     
+    /* LÓGICA DE RUTAS PÚBLICAS DE LA TIENDA */
+
     /**
      * Función que muestra el listado de las primeras 8 camisetas en la blade 'welcome', ordenadas Descendentemente por DESCUENTO (8 mejores ofertas).
      * Las camisetas sin stock no se mostrarán en la tienda.
@@ -29,6 +31,16 @@ class CamisetaController extends Controller
         $camisetas = DB::table('camisetas')->where('stock', '<>', 0)->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
         return view('welcome-detalles', compact('camisetas')); /* Ejecutamos la consulta al recargar la vista */
     }
+
+    /**
+     * 
+     * Función que muestra todos los detalles de la camiseta cuya imagen ha sido pinchada, dando la opción de añadir al carro en la nueva vista redirigida.
+     * Los clientes (incluso sin autenticar) pueden verla.
+     */
+    public function welcomeElegida($id) {
+        $camisetas = DB::table('camisetas')->where('id', $id)->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
+        return view('welcome-elegida', compact('camisetas')); /* Ejecutamos la consulta al recargar la vista */
+    }    
 
 
     /* LÓGICA DE ADMINISTRADOR */

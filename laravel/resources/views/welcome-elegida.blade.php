@@ -7,34 +7,29 @@
             <div class="col-md-12">                    
                 <div class="card">
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">    
-                        <strong>CAMISETAS EN VENTA</strong>
+                        <strong>@foreach($camisetas as $camiseta) {{ $camiseta->marca }} {{ $camiseta->modelo }} @endforeach</strong>
                     </div>
                     <div class="card-body col table-responsive bg-dark" style="padding-bottom: 43px;">
                         <!-- Mostraremos el listado de camisetas en formato tabla -->
                         <table class="table table-hover table-sm table-dark text white">
                             <thead>
-                                <th>Marca</th>
-                                <th>Modelo</th>
+                                <tr>
+                                    @foreach($camisetas as $camiseta) 
+                                    <th class="text-center" colspan="4">
+                                        <img class="mb-3" src="{{ asset($camiseta->imagen) }}" style="width:200px; border-radius:5px;">
+                                    </th>
+                                    @endforeach 
+                                </tr>
                                 <th>Características</th>
-                                <th>Imagen</th>
                                 <th>Precio</th>
                                 <th>Descuento</th>                                    
                                 <th>Stock</th>
                             </thead>
                             <tbody>
-                                @foreach($camisetas as $camiseta)
+                                @foreach($camisetas as $camiseta)                                
                                 <tr>
                                     <td>
-                                        {{ $camiseta->marca }}
-                                    </td>
-                                    <td>
-                                        {{ $camiseta->modelo }}
-                                    </td>
-                                    <td>
                                         {{ $camiseta->caracteristicas }}
-                                    </td>
-                                    <td>
-                                    <a href="{{ route('welcome-elegida', $camiseta->id) }}"><img class="ms-3" src="{{ asset($camiseta->imagen) }}" style="width:25px; border-radius:5px;"></a>
                                     </td>
                                     <td>
                                         {{ $camiseta->precio }} <?php echo" €"; ?>
