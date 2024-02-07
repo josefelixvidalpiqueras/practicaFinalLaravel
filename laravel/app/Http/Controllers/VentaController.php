@@ -44,8 +44,10 @@ class VentaController extends Controller
         // Obtenemos el array de IDs almacenadas en la sesión
         $ids = $request->session()->get('ids', []);
 
-        // Eliminamos el ID especificado del array
-        $ids = array_diff($ids, [$id]);
+        // Buscamos la primera aparición del ID en el array y la eliminamos (sólo la primera aparición, o borraría todas las unidades de esa camiseta del carrito)
+        if (($key = array_search($id, $ids)) !== false) {
+            unset($ids[$key]);
+        }
 
         // Actualizamos el array de IDs en la sesión
         $request->session()->put('ids', $ids);
@@ -56,7 +58,7 @@ class VentaController extends Controller
         // Actualizamos la cantidad de camisetas en una variable de sesión (cantidad_camisetas)
         $request->session()->put('cantidad_camisetas', $cantidadCamisetas);
 
-        // Redireccionar al listado del carrito de compra actualizado
+        // Redireccionamos al listado del carrito de compra actualizado
         return redirect()->route('carrito.index');
     }
     
