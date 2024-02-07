@@ -4,8 +4,8 @@
     <!-- Mostramos las camisetas de oferta a cualquier cliente que entre a la web (sin necesidad de estar autenticado) -->            
     <div class="container">
         <div class="row" style="margin-top: 30px;">
-            <div class="col-md-12">                    
-                <div class="card">
+            <div class="col-auto mx-auto">                    
+                <div class="card ">
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">    
                         <strong>@foreach($camisetas as $camiseta) {{ $camiseta->marca }} {{ $camiseta->modelo }} @endforeach</strong>
                     </div>
@@ -20,10 +20,10 @@
                                     </th>
                                     @endforeach 
                                 </tr>
-                                <th>Características</th>
-                                <th>Precio</th>
-                                <th>Descuento</th>                                    
-                                <th>Stock</th>
+                                <th class="fw-bold fst-italic">Características</th>
+                                <th class="fw-bold fst-italic">Precio</th>
+                                <th class="fw-bold fst-italic">Descuento</th>                                    
+                                <th class="fw-bold fst-italic">Stock</th>
                             </thead>
                             <tbody>
                                 @foreach($camisetas as $camiseta)                                
@@ -44,6 +44,10 @@
                                 @endforeach 
                             </tbody>
                         </table>
+                        <div class="text-center d-grid">
+                            /*Cuando el usuario añade un item al carrito, almacenamos el id del item añadido con variables de sesión */
+                            <a href="{{ route('carrito.add', $camiseta->id) }}" class="btn  btn-light"><strong>Añadir al carrito</strong></a>
+                        </div>
                     </div>
                 </div>
             </div>

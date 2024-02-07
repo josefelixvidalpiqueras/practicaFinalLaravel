@@ -17,13 +17,9 @@ use Illuminate\Support\Facades\Route;
 /* Todas las rutas de Auth (middleware) importadas y activas */
 Auth::routes();
 
-
-
-
 /* RUTAS PROTEGIDAS con autenticación */
 /* Grupo de rutas sólo accesibles una vez logueado con un usuario válido del sistema */
-Route::middleware('auth')->group(function () {
-    
+Route::middleware('auth')->group(function () {    
 
     /* ADMINISTRADOR */
     /* RUTAS DE CAMISETAS para usuarios ADMINISTRADOR */
@@ -73,7 +69,18 @@ Route::middleware('auth')->group(function () {
     /* Ruta con la lógica de actualizar los datos del perfil del usuario Cliente en la base de datos */
     Route::put('perfiles/{id}', 'PerfilController@perfilesUpdateCliente')->name('perfiles.updateCliente');
 
+    /* RUTAS DEL CARRITO DE COMPRAS */
+    /* Si entras a la ruta "/carrito/add/{id}" se ejecuta la función carritoAdd del controlador VentaController (el carrito sólo funciona logueado) */
+    Route::get('/carrito/add/{id}', 'VentaController@carritoAdd')->name('carrito.add');
+
+    /* Si entras a la ruta "/carrito/drop/{id}" se ejecuta la función carritoDrop del controlador VentaController (el carrito sólo funciona logueado) */
+    Route::get('/carrito/drop/{id}', 'VentaController@carritoDrop')->name('carrito.drop');
+
 });
+
+/* RUTAS DEL CARRITO DE COMPRAS */
+/* Si entras a la ruta "/carrito" se ejecuta la función carritoIndex del controlador VentaController */
+Route::get('/carrito', 'VentaController@carritoIndex')->name('carrito.index');
 
 
 
@@ -94,3 +101,5 @@ Route::get('/detalles', 'CamisetaController@welcomeDetalles')->name('welcome-det
 
 /* Si entras a la ruta "/{id}" (al pinchar una imagen de camiseta) se ejecuta la función "welcomeElegida" del controlador "CamisetaController.php" */
 Route::get('/{id}', 'CamisetaController@welcomeElegida')->name('welcome-elegida');
+
+

@@ -25,7 +25,7 @@
     </style>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-auto mx-auto">
                 <!-- Si existe algún mensaje de tipo 'info' lo mostramos dentro de un "alert" de Bootstrap -->
                 @if(session('info'))
                     <div class="alert alert-success alert-dismissible fade show mt-5 mb-2 text-center">

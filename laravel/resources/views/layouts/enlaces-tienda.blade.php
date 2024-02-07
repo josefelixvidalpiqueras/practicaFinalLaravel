@@ -94,20 +94,20 @@
                         @auth
                             @if (auth()->user()->is_admin==1)
                                 <!-- Botón carrito Administrador logueado -->
-                                <a class="me-3" href="" title="Carro de compras">
+                                <a class="me-lg-3 d-grid" href="{{ url('/carrito') }}" title="Carro de compras">
                                     <button class="btn btn-outline-secondary me-3 position-relative" title="Carro de compras" type="button">
                                         <i class="bi bi-cart4" style="color: black;"></i>
-                                        <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">0</span>
+                                        <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">{{ session()->get('cantidad_camisetas', 0) }}</span>
                                     </button>
                                 </a>
                                 <a href="{{ url('/admin/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-sm-none d-grid">Home</a>
                                 <a href="{{ url('/admin/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-none d-sm-block d-grid">Volver a mi Home</a>
                             @else
                                 <!-- Botón carrito Cliente logueado -->
-                                <a class="me-3" href="" title="Carro de compras">
+                                <a class="me-lg-3 d-grid" href="{{ url('/carrito') }}" title="Carro de compras">
                                     <button class="btn btn-outline-secondary me-3 position-relative" title="Carro de compras" type="button">
                                         <i class="bi bi-cart4" style="color: black;"></i>
-                                        <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">0</span>
+                                        <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">{{ session()->get('cantidad_camisetas', 0) }}</span>
                                     </button>
                                 </a>
                                 <a href="{{ url('/home') }}" class="btn btn-sm btn-light ms-1 me-3 d-sm-none d-grid">Home</a>
@@ -115,10 +115,10 @@
                             @endif                    
                         @else
                             <!-- Botón carrito sin estar logueado (te redirige al login antes de la lógica) -->
-                            <a class="me-3" href="" title="Carro de compras">
+                            <a class="me-lg-3 d-grid" href="{{ url('/carrito') }}" title="Carro de compras">
                                 <button class="btn btn-outline-secondary me-3 position-relative" title="Carro de compras" type="button">
                                     <i class="bi bi-cart4" style="color: black;"></i>
-                                    <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">0</span>
+                                    <span class="badge rounded-pill bg-black position-absolute top-0 start-100 translate-middle fw-light border badge-sm" style="font-size: 0.6rem; padding: 0.2rem 0.4rem;">{{ session()->get('cantidad_camisetas', 0) }}</span>
                                 </button>
                             </a>
                             <!-- Botones Log in y Register -->
