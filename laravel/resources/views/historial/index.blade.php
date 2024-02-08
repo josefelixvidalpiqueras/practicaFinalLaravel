@@ -42,8 +42,8 @@
                         <table class="table table-hover table-sm table-dark text-white">
                             <thead class="text-center">
                                 <th>Nº Pedido</th>
-                                <th>ID Camiseta</th>
-                                <th>ID User</th>
+                                <th>Camiseta</th>
+                                <th>Cliente</th>
                                 <th>Estado</th>
                                 <th>Precio Venta</th>
                                 <th>Descuento Venta</th>
@@ -56,10 +56,16 @@
                                         {{ $venta->id }}
                                     </td>
                                     <td>
-                                        {{ $venta->id_camiseta }}
+                                        @php
+                                            $camiseta = App\Models\Camiseta::findOrFail($venta->id_camiseta); /* Forma rápida de acceder a campos entre tablas relacionadas */
+                                        @endphp
+                                        {{ $camiseta->marca }} {{ $camiseta->modelo }}
                                     </td>
                                     <td>
-                                        {{ $venta->id_user }}
+                                        @php
+                                            $usuario = App\Models\User::findOrFail($venta->id_user); /* Forma rápida de acceder a campos entre tablas relacionadas */
+                                        @endphp
+                                        {{ $usuario->nif }}
                                     </td>
                                     <td>
                                         {{ $venta->estado }}
