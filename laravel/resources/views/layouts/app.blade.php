@@ -70,7 +70,7 @@
                                     <a href="{{ url('/perfiles') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Perfil</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Historial</a>
+                                    <a href="{{ url('/historial') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Historial</a>
                                 </div>
                             <?php    
                                 }                    

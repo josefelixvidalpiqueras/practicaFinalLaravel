@@ -71,10 +71,10 @@
                                         {{ $venta->estado }}
                                     </td>
                                     <td>
-                                        {{ $venta->precio_venta }}
+                                        {{ $venta->precio_venta }} €
                                     </td>
                                     <td>
-                                        {{ $venta->descuento_venta }}
+                                        {{ $venta->descuento_venta }} %
                                     </td>
                                     <td>
                                         {{ $venta->created_at }}

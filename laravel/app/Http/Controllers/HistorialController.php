@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;  /* Importamos para poder usar este tipo de c
 class HistorialController extends Controller
 {
     
+    /* ADMINISTRADOR */
     /**
      * Función que consulta todos los pedidos de la historia de la tienda y devuelve la consulta al redireccionar 
      * al usuario a la vista del listado del historial. Los pedidos están ordenados Descendientemente por id para
@@ -37,4 +38,13 @@ class HistorialController extends Controller
         return redirect()->route('historial.index')->with('info', 'Estado del pedido Nº '.$id.' cambiado a "'.$venta->estado.'".');
     }
 
+    /* CLIENTE */
+    /**
+     * Función que muestra el lisado con el historial de pedidos del usuario CLIENTE logueado.
+     */
+    public function historialClienteIndex() {
+        $ventas = DB::table('ventas')->where('id_user', auth()->user()->id)->get(); /* Consulta de todos los pedidos de del usuario logueado en la tienda */
+        return view('historial.indexCliente', compact('ventas'));
+    }
+    
 }

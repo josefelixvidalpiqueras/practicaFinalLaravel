@@ -46,7 +46,7 @@
                         <strong><em>{{ session('error') }}</em></strong>
                     </div>                     
                 @endif
-                <div class="card"  style="margin-bottom: 60px;">
+                <div class="card"  style="margin-bottom: 30px;">
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">
                         <strong>MI CARRO DE COMPRA</strong>
                     </div>
@@ -125,10 +125,12 @@
                                     @endif
                                 @endforeach
 
+                                
                                 <!-- Mostramos el total del pedido -->
                                 {{ number_format($sumaTotalPedido, 2) }}€
                             </div>
 
+                            <div class="col-auto ms-auto text-white mt-2 d-none d-md-block" style="margin-right: 80px; font-style: italic;">Descuentos aplicados *</div>
                             <!-- Botón que realiza el pedido (acción de comprar las camisetas del carrito) --> 
                             <a href="{{ route('carrito.realizarpedido') }}" class="col-10 mx-auto d-grid btn btn-light mt-2"><strong>Realizar pedido</strong></a>
 
@@ -142,7 +144,7 @@
                                 <input title="Contrareembolso" type="radio" id="efectivo" name="metodopago" value="tarjeta">
                                 <label title="Contrareembolso" for="efectivo">Efectivo</label>
                             </div>
-                            <div class="col-3 mt-3 ">
+                            <div class="col-3 mt-3">
                                 <input title="Pago con tarjeta" type="radio" id="tarjeta" name="metodopago" value="tarjeta">
                                 <label title="Pago con tarjeta" for="tarjeta">Tarjeta</label>
                             </div>

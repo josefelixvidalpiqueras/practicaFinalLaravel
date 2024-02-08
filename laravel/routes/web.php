@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     /* Ruta a a la vista (blade) con el listado de Cuentas de los usuarios */
     Route::get('admin/cuentas/{id}', 'CuentaController@cuentasUpdate')->name('cuentas.update')->middleware('is_admin');
 
+    /*RUTAS DE HISTORIAL de pedidos para usuarios ADMINISTRADOR */
     /* Ruta a la vista (blade) con el listado del Historial de pedidos de todos los usuarios */
     Route::get('admin/historial', 'HistorialController@historialIndex')->name('historial.index')->middleware('is_admin');
      
@@ -79,6 +80,9 @@ Route::middleware('auth')->group(function () {
     Route::put('perfiles/{id}', 'PerfilController@perfilesUpdateCliente')->name('perfiles.updateCliente');
 
     /* RUTAS DEL CARRITO DE COMPRAS (COMUNES A ADMINISTRADOR Y CLIENTE) */
+    /* Si entras a la ruta "/carrito" se ejecuta la función carritoIndex del controlador VentaController */
+    Route::get('/carrito', 'VentaController@carritoIndex')->name('carrito.index');
+
     /* Si entras a la ruta "/carrito/add/{id}/{precioVenta}/{descuentoVenta}" se ejecuta la función carritoAdd del controlador VentaController (el carrito sólo funciona logueado) */
     Route::get('/carrito/add/{id}/{precioVenta}/{descuentoVenta}', 'VentaController@carritoAdd')->name('carrito.add');
 
@@ -87,13 +91,14 @@ Route::middleware('auth')->group(function () {
 
     /* Si entras a la ruta "/carrito/realizarpedido" se ejecuta la función realizarPedido del controlador VentaController. */
     Route::get('/carrito/realizarpedido', 'VentaController@realizarPedido')->name('carrito.realizarpedido');
-    
+
+    /*RUTAS DE HISTORIAL de pedidos para usuarios CLIENTE */
+    /* Ruta a la vista (blade) con el listado del Historial de pedidos de todos los usuarios */
+    Route::get('/historial', 'HistorialController@historialClienteIndex')->name('historial.indexCliente');
 
 });
 
-/* RUTAS DEL CARRITO DE COMPRAS */
-/* Si entras a la ruta "/carrito" se ejecuta la función carritoIndex del controlador VentaController */
-Route::get('/carrito', 'VentaController@carritoIndex')->name('carrito.index');
+
 
 /* RUTAS DE CADA HOME (página principal de cada tipo de usuario al hacer login) */
 /* Ruta que ejecuta la función index (User Home) del HomeController.php */

@@ -35,40 +35,53 @@
                 @endif
                 <div class="card">
                     <div class="card-header text-center bg-dark text-white">
-                        <strong>MI PERFIL</strong>
-                        <a href="{{ route('perfiles.editCliente', auth()->user()->id) }}" class="btn btn-outline-light btn-sm float-end">Modificar Perfil</a>
+                        <strong>HISTORIAL DE PEDIDOS</strong>
                     </div>
                     <div class="card-body col table-responsive bg-dark">
                         <!-- Mostraremos el listado de datos del usuario en formato tabla -->
-                        <table class="table table-hover table-sm table-dark text white">
-                            <thead>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Contraseña</th>
-                                <th>NIF</th>
-                                <th>Dirección</th>
-                                <th>Teléfono</th>
+                        <table class="table table-hover table-sm table-dark text-white">
+                            <thead class="text-center">
+                                <th>Nº Pedido</th>
+                                <th>Camiseta</th>
+                                <th>Cliente</th>
+                                <th>Estado</th>
+                                <th>Precio Venta</th>
+                                <th>Descuento Venta</th>
+                                <th>Precio Final</th>
+                                <th>Fecha</th>
                             </thead>
-                            <tbody>
-                                @foreach($users as $user)
+                            <tbody class="text-center">
+                                @foreach($ventas as $venta)
                                 <tr>
                                     <td>
-                                        {{ $user->name }}
+                                        {{ $venta->id }}
                                     </td>
                                     <td>
-                                        {{ $user->email }}
+                                        @php
+                                            $camiseta = App\Models\Camiseta::findOrFail($venta->id_camiseta); /* Forma rápida de acceder a campos entre tablas relacionadas */
+                                        @endphp
+                                        {{ $camiseta->marca }} {{ $camiseta->modelo }}
                                     </td>
                                     <td>
-                                        ****
+                                        @php
+                                            $usuario = App\Models\User::findOrFail($venta->id_user); /* Forma rápida de acceder a campos entre tablas relacionadas */
+                                        @endphp
+                                        {{ $usuario->nif }}
                                     </td>
                                     <td>
-                                        {{ $user->nif }}
+                                        {{ $venta->estado }}
                                     </td>
                                     <td>
-                                        {{ $user->direccion }}
+                                        {{ $venta->precio_venta }} €
                                     </td>
                                     <td>
-                                        {{ $user->telefono }}
+                                        {{ $venta->descuento_venta }} %
+                                    </td>
+                                    <td>
+                                        {{ number_format(($venta->precio_venta)-($venta->precio_venta*$venta->descuento_venta/100), 2) }} €
+                                    </td>
+                                    <td>
+                                        {{ $venta->created_at }}
                                     </td>
                                 </tr>
                                 @endforeach 
