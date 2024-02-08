@@ -51,7 +51,7 @@
                                     <a href="{{ url('/admin/camisetas') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Camisetas</a>
                                 </div>
                                 <div class="nav-item">
-                                    <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Ventas</a>
+                                    <a href="{{ url('/admin/historial') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Historial</a>
                                 </div>
                                 <div class="nav-item">
                                     <a href="" class="col-auto btn btn-sm btn-light me-3 d-grid">Noticias</a>

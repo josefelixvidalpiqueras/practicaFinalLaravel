@@ -139,12 +139,12 @@
                                 <strong class="bg-light text-dark p-1 pe-1" style="border-radius: 5px;"><em>Dirección de envío:</em></strong>&nbsp; {{ auth()->user()->direccion }}
                             </div>
                             <div class="col-3 offset-6 mt-3 text-end">
-                                <input type="radio" id="efectivo" name="metodopago" value="tarjeta">
-                                <label for="efectivo">Efectivo</label>
+                                <input title="Contrareembolso" type="radio" id="efectivo" name="metodopago" value="tarjeta">
+                                <label title="Contrareembolso" for="efectivo">Efectivo</label>
                             </div>
                             <div class="col-3 mt-3 ">
-                                <input type="radio" id="tarjeta" name="metodopago" value="tarjeta">
-                                <label for="tarjeta">Tarjeta</label>
+                                <input title="Pago con tarjeta" type="radio" id="tarjeta" name="metodopago" value="tarjeta">
+                                <label title="Pago con tarjeta" for="tarjeta">Tarjeta</label>
                             </div>
                         </div>
 

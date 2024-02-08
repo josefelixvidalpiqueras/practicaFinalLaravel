@@ -59,7 +59,13 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/cuentas/{id}', 'CuentaController@cuentasUpdate')->name('cuentas.update')->middleware('is_admin');
 
     /* Ruta a la vista (blade) con el listado del Historial de pedidos de todos los usuarios */
-    Route::get('admin/historial', 'HistorialController@historialIndex')->name('cuentas.update')->middleware('historial.index');
+    Route::get('admin/historial', 'HistorialController@historialIndex')->name('historial.index')->middleware('is_admin');
+     
+    /* Ruta a la vista (blade) con el envío seleccionado para el cambio de estado del pedido por parte del Administrador */
+    Route::get('admin/historial/{id}', 'HistorialController@historialEdit')->name('historial.edit')->middleware('is_admin');
+
+    /* Ruta a la vista (blade) que cambia el estado del pedido al elegido por parte del Administrador en la ruta de edición */
+    Route::put('admin/historial/update/{id}', 'HistorialController@historialUpdate')->name('historial.update')->middleware('is_admin');
 
     /* CLIENTE */
     /* RUTAS DE PERFILES para usuarios CLIENTE */

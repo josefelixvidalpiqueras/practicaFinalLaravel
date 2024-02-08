@@ -26,43 +26,54 @@
     <div class="container">
         <div class="row">
             <div class="col-auto mx-auto">
+                <!-- Si existe algún mensaje de tipo 'info' lo mostramos dentro de un "alert" de Bootstrap -->
+                @if(session('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-2 text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong><em>{{ session('info') }}</em></strong>
+                    </div>                     
+                @endif
                 <div class="card">
                     <div class="card-header text-center bg-dark text-white">
-                        <strong>MI PERFIL</strong>
-                        <a href="{{ route('perfiles.edit', auth()->user()->id) }}" class="btn btn-outline-light btn-sm float-end">Modificar Perfil</a>
+                        <strong>HISTORIAL DE PEDIDOS</strong>
                     </div>
                     <div class="card-body col table-responsive bg-dark">
                         <!-- Mostraremos el listado de datos del usuario en formato tabla -->
-                        <table class="table table-hover table-sm table-dark text white">
-                            <thead>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Contraseña</th>
-                                <th>NIF</th>
-                                <th>Dirección</th>
-                                <th>Teléfono</th>
+                        <table class="table table-hover table-sm table-dark text-white">
+                            <thead class="text-center">
+                                <th>Nº Pedido</th>
+                                <th>ID Camiseta</th>
+                                <th>ID User</th>
+                                <th>Estado</th>
+                                <th>Precio Venta</th>
+                                <th>Descuento Venta</th>
+                                <th>Fecha</th>
                             </thead>
-                            <tbody>
-                                @foreach($users as $user)
+                            <tbody class="text-center">
+                                @foreach($ventas as $venta)
                                 <tr>
                                     <td>
-                                        {{ $user->name }}
+                                        {{ $venta->id }}
                                     </td>
                                     <td>
-                                        {{ $user->email }}
+                                        {{ $venta->id_camiseta }}
                                     </td>
                                     <td>
-                                        ****
+                                        {{ $venta->id_user }}
                                     </td>
                                     <td>
-                                        {{ $user->nif }}
+                                        {{ $venta->estado }}
                                     </td>
                                     <td>
-                                        {{ $user->direccion }}
+                                        {{ $venta->precio_venta }}
                                     </td>
                                     <td>
-                                        {{ $user->telefono }}
+                                        {{ $venta->descuento_venta }}
                                     </td>
+                                    <td>
+                                        {{ $venta->created_at }}
+                                    </td>
+                                    <td><a href="{{ route('historial.edit', $venta->id) }}" class="btn btn-outline-warning border-light btn-sm ms-2">Cambiar Estado</a></td>
                                 </tr>
                                 @endforeach 
                             </tbody>

@@ -35,7 +35,7 @@
                             <strong>EDITAR CAMISETA</strong>
                         </div>
                         <div class="card-body row">
-                            <!-- Formulario de inserción de nueva camiseta -->
+                            <!-- Formulario de edición de la camiseta seleccionada -->
                             <form action="{{ route('camisetas.update', $camiseta->id) }}" method="POST" class="row">
                             @method('put')    
                             @csrf
