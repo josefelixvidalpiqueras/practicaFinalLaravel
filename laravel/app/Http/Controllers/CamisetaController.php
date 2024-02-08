@@ -71,7 +71,25 @@ class CamisetaController extends Controller
         $newCamiseta -> precio = $request -> input('precio');
         $newCamiseta -> stock = $request -> input('stock');
         $newCamiseta -> descuento = $request -> input('descuento');
-        $newCamiseta -> imagen = $request -> input('imagen');
+
+        // Verificamos si se ha enviado un archivo de imagen
+        if ($request->hasFile('imagen')) {
+            // Obtenemos el archivo de imagen de la solicitud
+            $imagen = $request->file('imagen');
+            
+            // Verificamos si la imagen se cargó correctamente
+            if ($imagen->isValid()) {
+                // Generamos un nombre único para la imagen
+                $nombreImagen = time().'.'.$imagen->getClientOriginalExtension();
+                
+                // Movemos la imagen a la ruta pertinente (en mi caso "images" es donde tengo todas mis imágenes en la carpeta public del proyecto)
+                $imagen->move(public_path('images'), $nombreImagen);
+                
+                // Asignamos la ruta de la imagen al objeto de Camiseta
+                $newCamiseta->imagen = 'images/'.$nombreImagen;
+            }
+        }
+
         $newCamiseta -> save(); /* Guardamos la nueva Camiseta en su tabla en la base de datos */    
         return redirect()->route('camisetas.index')->with('info', 'Camiseta insertada correctamente.'); /* Tras crear la camiseta redirigimos al usuario al listado de Camisetas */
     }
@@ -104,7 +122,30 @@ class CamisetaController extends Controller
         $camiseta -> precio = $request -> input('precio');
         $camiseta -> stock = $request -> input('stock');
         $camiseta -> descuento = $request -> input('descuento');
-        $camiseta -> imagen = $request -> input('imagen');
+        
+        // Verificamos si se ha enviado un archivo de imagen
+        if ($request->hasFile('imagen')) {
+            // Validamos la imagen pasada desde el formulario
+            $request->validate([
+                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            // Obtenemos el archivo de imagen de la solicitud
+            $imagen = $request->file('imagen');
+
+            // Verificamos si la imagen se ha cargado correctamente
+            if ($imagen->isValid()) {
+                // Generamos un nombre único para la imagen
+                $nombreImagen = time().'.'.$imagen->getClientOriginalExtension();
+
+                // Movemos la imagen a la ruta pertinente (en mi caso "images" en la carpeta public)
+                $imagen->move(public_path('images'), $nombreImagen);
+
+                // Asignamos la ruta de la imagen actualizada al objeto de Camiseta
+                $camiseta->imagen = 'images/'.$nombreImagen;
+            }
+        }
+
         $camiseta -> save(); /* Guardamos los nuevos datos de la Camiseta en su tabla en la base de datos */    
         return redirect()->route('camisetas.index')->with('info', 'Camiseta actualizada correctamente.'); /* Tras actualizar la Camiseta redirigimos al usuario al listado de Camisetas */
     }

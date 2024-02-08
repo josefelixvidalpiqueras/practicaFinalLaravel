@@ -36,35 +36,35 @@
                         </div>
                         <div class="card-body row">
                             <!-- Formulario de inserción de nueva camiseta -->
-                            <form action="{{ route('camisetas.store') }}" method="POST" class="row">
+                            <form action="{{ route('camisetas.store') }}" method="POST" class="row" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group col-6">
                                     <label class="form-label" for="marca"><strong>Marca</strong></label>
-                                    <input type="text" name="marca" id="marca" class="form-control bg-light">
+                                    <input type="text" name="marca" id="marca" class="form-control bg-light" required>
                                 </div>
                                 <div class="form-group col-6">
                                     <label class="form-label" for="modelo"><strong>Modelo</strong></label>
-                                    <input type="text" name="modelo" id="modelo" class="form-control bg-light">
+                                    <input type="text" name="modelo" id="modelo" class="form-control bg-light" required>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="caracteristicas"><strong>Características</strong></label>
-                                    <input type="text" name="caracteristicas" id="caracteristicas" class="form-control bg-light">
+                                    <input type="text" name="caracteristicas" id="caracteristicas" class="form-control bg-light" required>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="precio"><strong>Precio</strong></label>
-                                    <input type="number" step="0.01" min="0" name="precio" id="precio" class="form-control bg-light">
+                                    <input type="number" step="0.01" min="0" name="precio" id="precio" class="form-control bg-light" required>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="stock"><strong>Stock</strong></label>
-                                    <input type="text" name="stock" id="stock" class="form-control bg-light">
+                                    <input type="text" name="stock" id="stock" class="form-control bg-light" required>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="descuento"><strong>Descuento</strong></label>
-                                    <input type="number" min="0" max="100" name="descuento" id="descuento" class="form-control bg-light">
+                                    <input type="number" min="0" max="100" name="descuento" id="descuento" class="form-control bg-light" required>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="imagen"><strong>Imagen</strong></label>
-                                    <input type="text" name="imagen" id="imagen" class="form-control bg-light">
+                                    <input class="form-control bg-light" type="file" name="imagen" id="imagen" required>
                                 </div>
 
                                 <div class="col-6" style="margin-top: 35px;">

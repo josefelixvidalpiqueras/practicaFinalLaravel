@@ -32,40 +32,40 @@
                 <div class="col-auto mx-auto mt-5">
                     <div class="card">
                         <div class="card-header text-center bg-dark text-white">
-                            <strong>EDITAR CAMISETA</strong>
+                            <strong>EDITAR STOCK</strong>
                         </div>
                         <div class="card-body row">
                             <!-- Formulario de edición de la camiseta seleccionada -->
-                            <form action="{{ route('camisetas.update', $camiseta->id) }}" method="POST" class="row">
+                            <form action="{{ route('camisetas.update', $camiseta->id) }}" method="POST" class="row" enctype="multipart/form-data">
                             @method('put')    
                             @csrf
                                 <div class="form-group col-6">
                                     <label class="form-label" for="marca"><strong>Marca</strong></label>
-                                    <input type="text" name="marca" value="{{ $camiseta->marca }}" id="marca" class="form-control bg-light">
+                                    <input type="text" name="marca" value="{{ $camiseta->marca }}" id="marca" class="form-control bg-light" readonly>
                                 </div>
                                 <div class="form-group col-6">
                                     <label class="form-label" for="modelo"><strong>Modelo</strong></label>
-                                    <input type="text" name="modelo" value="{{ $camiseta->modelo }}" id="modelo" class="form-control bg-light">
+                                    <input type="text" name="modelo" value="{{ $camiseta->modelo }}" id="modelo" class="form-control bg-light" readonly>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="caracteristicas"><strong>Características</strong></label>
-                                    <input type="text" name="caracteristicas" value="{{ $camiseta->caracteristicas }}" id="caracteristicas" class="form-control bg-light">
+                                    <input type="text" name="caracteristicas" value="{{ $camiseta->caracteristicas }}" id="caracteristicas" class="form-control bg-light" readonly>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="precio"><strong>Precio</strong></label>
-                                    <input type="number" step="0.01" min="0" name="precio" value="{{ $camiseta->precio }}" id="precio" class="form-control bg-light">
+                                    <input type="number" step="0.01" min="0" name="precio" value="{{ $camiseta->precio }}" id="precio" class="form-control bg-light" readonly>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="stock"><strong>Stock</strong></label>
-                                    <input type="text" name="stock" value="{{ $camiseta->stock }}" id="stock" class="form-control bg-light">
+                                    <input type="number" min="0" name="stock" value="{{ $camiseta->stock }}" id="stock" class="form-control bg-light">
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="descuento"><strong>Descuento</strong></label>
-                                    <input type="number" min="0" max="100" name="descuento"  value="{{ $camiseta->descuento }}" id="descuento" class="form-control bg-light">
+                                    <input type="number" min="0" max="100" name="descuento"  value="{{ $camiseta->descuento }}" id="descuento" class="form-control bg-light" readonly>
                                 </div>
                                 <div class="form-group col-6 mt-3">
                                     <label class="form-label" for="imagen"><strong>Imagen</strong></label>
-                                    <input type="text" name="imagen" value="{{ $camiseta->imagen }}" id="imagen" class="form-control bg-light">
+                                    <input type="text" name="imagen" value="{{ $camiseta->imagen }}" id="imagen" class="form-control bg-light" readonly>
                                 </div>
 
                                 <div class="col-6" style="margin-top: 35px;">

@@ -64,7 +64,7 @@
                                         {{ $camiseta->caracteristicas }}
                                     </td>
                                     <td>
-                                        <img class="ms-3" src="{{ asset($camiseta->imagen) }}" style="width:25px; border-radius:5px;">
+                                        <img class="ms-3" src="{{ asset($camiseta->imagen) }}" style="width:25px; border-radius:5px;" alt="Imagen de la camiseta">
                                     </td>
                                     <td>
                                         {{ $camiseta->precio }} <?php echo" €"; ?>
