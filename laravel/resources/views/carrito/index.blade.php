@@ -24,15 +24,28 @@
     </style>
     <div class="container">
         <div class="row">
-            <div class="col-auto mx-auto" style="margin-top: 30px;">
-            
-                <div class="card"  style="margin-bottom: 250px;">
+            <div class="col-auto col-md-10 mx-auto" style="margin-top: 30px;">
+                <!-- Si existe algún mensaje de tipo 'info' lo mostramos dentro de un "alert" de Bootstrap -->
+                @if(session('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-2 text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong><em>{{ session('info') }}</em></strong>
+                    </div>                     
+                @endif
+                <!-- Si existe algún mensaje de tipo 'warning' lo mostramos dentro de un "alert" de Bootstrap -->
+                @if(session('warning'))
+                    <div class="alert alert-primary alert-dismissible fade show mb-2 text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong><em>{{ session('warning') }}</em></strong>
+                    </div>                     
+                @endif
+                <div class="card"  style="margin-bottom: 150px;">
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">
                         <strong>MI CARRO DE COMPRA</strong>
                     </div>
                     <div class="card-body col table-responsive bg-dark text-white">
                         <!-- Mostraremos el listado de camisetas en formato tabla -->
-                        <table class="table table-hover table-sm table-dark text white">
+                        <table class="table table-hover table-sm table-dark text-white">
                             <thead>
                                 <tr>
                                     
@@ -110,7 +123,7 @@
                             </div>
 
                             <!-- Botón que realiza el pedido (acción de comprar las camisetas del carrito) --> 
-                            <a href="" class="col-10 mx-auto d-grid btn btn-light mt-2"><strong>Realizar pedido</strong></a>
+                            <a href="{{ route('carrito.realizarpedido') }}" class="col-10 mx-auto d-grid btn btn-light mt-2"><strong>Realizar pedido</strong></a>
 
                         </div>                      
 

@@ -70,11 +70,17 @@ Route::middleware('auth')->group(function () {
     Route::put('perfiles/{id}', 'PerfilController@perfilesUpdateCliente')->name('perfiles.updateCliente');
 
     /* RUTAS DEL CARRITO DE COMPRAS */
-    /* Si entras a la ruta "/carrito/add/{id}" se ejecuta la función carritoAdd del controlador VentaController (el carrito sólo funciona logueado) */
-    Route::get('/carrito/add/{id}', 'VentaController@carritoAdd')->name('carrito.add');
+    /* Si entras a la ruta "/carrito/add/{id}/{precioVenta}/{descuentoVenta}" se ejecuta la función carritoAdd del controlador VentaController (el carrito sólo funciona logueado) */
+    Route::get('/carrito/add/{id}/{precioVenta}/{descuentoVenta}', 'VentaController@carritoAdd')->name('carrito.add');
 
     /* Si entras a la ruta "/carrito/drop/{id}" se ejecuta la función carritoDrop del controlador VentaController (el carrito sólo funciona logueado) */
     Route::get('/carrito/drop/{id}', 'VentaController@carritoDrop')->name('carrito.drop');
+
+    /* Si entras a la ruta "/carrito/realizarpedido" se ejecuta la función realizarPedido del controlador VentaController. */
+    Route::get('/carrito/realizarpedido', 'VentaController@realizarPedido')->name('carrito.realizarpedido');
+
+    /* Ruta a ventana modal de confirmación del pedido */
+    
 
 });
 

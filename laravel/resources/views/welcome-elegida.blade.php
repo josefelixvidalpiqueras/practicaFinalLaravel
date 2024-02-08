@@ -7,7 +7,11 @@
             <div class="col-auto mx-auto">                    
                 <div class="card ">
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">    
-                        <strong>@foreach($camisetas as $camiseta) {{ $camiseta->marca }} {{ $camiseta->modelo }} @endforeach</strong>
+                        <strong>
+                            @foreach($camisetas as $camiseta) 
+                                {{ $camiseta->marca }} {{ $camiseta->modelo }} 
+                            @endforeach
+                        </strong>
                     </div>
                     <div class="card-body col table-responsive bg-dark" style="padding-bottom: 43px;">
                         <!-- Mostraremos el listado de camisetas en formato tabla -->
@@ -41,13 +45,15 @@
                                         {{ $camiseta->stock }} <?php echo" uds"; ?>
                                     </td>                                                                         
                                 </tr>
+                                <tr>
+                                    <td colspan="4" class="">
+                                        <!-- Cuando el usuario añade un item al carrito, almacenamos el id del item añadido con variables de sesión -->
+                                        <a href="{{ route('carrito.add', ['id' => $camiseta->id, 'precioVenta' => $camiseta->precio, 'descuentoVenta' => $camiseta->descuento]) }}" class="btn  btn-light d-grid"><strong>Añadir al carrito</strong></a>
+                                    </td>
+                                </tr>
                                 @endforeach 
                             </tbody>
                         </table>
-                        <div class="text-center d-grid">
-                            /*Cuando el usuario añade un item al carrito, almacenamos el id del item añadido con variables de sesión */
-                            <a href="{{ route('carrito.add', $camiseta->id) }}" class="btn  btn-light"><strong>Añadir al carrito</strong></a>
-                        </div>
                     </div>
                 </div>
             </div>
