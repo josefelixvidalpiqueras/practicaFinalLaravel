@@ -39,7 +39,14 @@
                         <strong><em>{{ session('warning') }}</em></strong>
                     </div>                     
                 @endif
-                <div class="card"  style="margin-bottom: 150px;">
+                <!-- Si existe algún mensaje de tipo 'error' lo mostramos dentro de un "alert" de Bootstrap -->
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show mb-2 text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong><em>{{ session('error') }}</em></strong>
+                    </div>                     
+                @endif
+                <div class="card"  style="margin-bottom: 60px;">
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">
                         <strong>MI CARRO DE COMPRA</strong>
                     </div>
@@ -125,7 +132,21 @@
                             <!-- Botón que realiza el pedido (acción de comprar las camisetas del carrito) --> 
                             <a href="{{ route('carrito.realizarpedido') }}" class="col-10 mx-auto d-grid btn btn-light mt-2"><strong>Realizar pedido</strong></a>
 
-                        </div>                      
+                        </div>      
+                        
+                        <div class="row mt-3 ">
+                            <div class="col-12 mt-3 text-center">
+                                <strong class="bg-light text-dark p-1 pe-1" style="border-radius: 5px;"><em>Dirección de envío:</em></strong>&nbsp; {{ auth()->user()->direccion }}
+                            </div>
+                            <div class="col-3 offset-6 mt-3 text-end">
+                                <input type="radio" id="efectivo" name="metodopago" value="tarjeta">
+                                <label for="efectivo">Efectivo</label>
+                            </div>
+                            <div class="col-3 mt-3 ">
+                                <input type="radio" id="tarjeta" name="metodopago" value="tarjeta">
+                                <label for="tarjeta">Tarjeta</label>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

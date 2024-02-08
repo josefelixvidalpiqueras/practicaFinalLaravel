@@ -109,6 +109,17 @@ class VentaController extends Controller
         if (empty($ids)) {
             return redirect()->route('carrito.index')->with('warning', 'Añade alguna camiseta al carrito para realizar un pedido.');
         }
+        
+        // ME CALENTÉ Y NO ME ACORDÉ QUE LAS CAMISETAS EN STOCK NO SE MUESTRAN EN LA TIENDA, 
+        // PERO PARA UN FUTURO YA ESTÁ HECHA LA COMPROBACIÓN DE NO RESTAR CON STOCK 0 EN LA BASE DE DATOS
+        // Verificamos si hay suficiente stock para cada camiseta en el carrito
+        foreach ($ids as $key => $id) {
+            $camiseta = Camiseta::find($id);
+            if (!$camiseta || $camiseta->stock <= 0) {
+                // Si no hay suficiente stock, notificamos al usuario y redirigimos de vuelta al carrito
+                return redirect()->route('carrito.index')->with('error', 'La camiseta ' . $camiseta->marca . ' - ' . $camiseta->modelo . ' no está disponible en stock.');
+            }
+        }
     
         // Recorremos los elementos del carrito y creamos una venta para cada camiseta en el mismo pedido.
         foreach ($ids as $key => $id) {
@@ -120,6 +131,12 @@ class VentaController extends Controller
             $venta->precio_venta = $precios[$key];
             $venta->descuento_venta = $descuentos[$key];
             $venta->save();
+
+            // Restamos 1 al campo 'stock' de la camiseta (pero sólo si el stock es mayor a 0)
+            $camiseta = Camiseta::find($id);
+            if ($camiseta && $camiseta->stock > 0) {
+                $camiseta->decrement('stock', 1);
+            }
         }
     
         // Limpiamos la sesión después de realizar el pedido (para vaciar el carrito y no recordar los datos del pedido anterior)

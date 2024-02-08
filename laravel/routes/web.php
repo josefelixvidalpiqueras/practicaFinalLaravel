@@ -52,11 +52,14 @@ Route::middleware('auth')->group(function () {
     Route::put('admin/perfiles/{id}', 'PerfilController@perfilesUpdate')->name('perfiles.update')->middleware('is_admin');
 
     /* RUTAS DE CUENTAS para usuarios ADMINISTRADOR */
-    /* Ruta al a la vista (blade) con el listado de Cuentas de los usuarios */
+    /* Ruta a a la vista (blade) con el listado de Cuentas de los usuarios */
     Route::get('admin/cuentas', 'CuentaController@cuentasIndex')->name('cuentas.index')->middleware('is_admin');
 
-    /* Ruta al a la vista (blade) con el listado de Cuentas de los usuarios */
+    /* Ruta a a la vista (blade) con el listado de Cuentas de los usuarios */
     Route::get('admin/cuentas/{id}', 'CuentaController@cuentasUpdate')->name('cuentas.update')->middleware('is_admin');
+
+    /* Ruta a la vista (blade) con el listado del Historial de pedidos de todos los usuarios */
+    Route::get('admin/historial', 'HistorialController@historialIndex')->name('cuentas.update')->middleware('historial.index');
 
     /* CLIENTE */
     /* RUTAS DE PERFILES para usuarios CLIENTE */
@@ -69,7 +72,7 @@ Route::middleware('auth')->group(function () {
     /* Ruta con la lógica de actualizar los datos del perfil del usuario Cliente en la base de datos */
     Route::put('perfiles/{id}', 'PerfilController@perfilesUpdateCliente')->name('perfiles.updateCliente');
 
-    /* RUTAS DEL CARRITO DE COMPRAS */
+    /* RUTAS DEL CARRITO DE COMPRAS (COMUNES A ADMINISTRADOR Y CLIENTE) */
     /* Si entras a la ruta "/carrito/add/{id}/{precioVenta}/{descuentoVenta}" se ejecuta la función carritoAdd del controlador VentaController (el carrito sólo funciona logueado) */
     Route::get('/carrito/add/{id}/{precioVenta}/{descuentoVenta}', 'VentaController@carritoAdd')->name('carrito.add');
 
@@ -78,8 +81,6 @@ Route::middleware('auth')->group(function () {
 
     /* Si entras a la ruta "/carrito/realizarpedido" se ejecuta la función realizarPedido del controlador VentaController. */
     Route::get('/carrito/realizarpedido', 'VentaController@realizarPedido')->name('carrito.realizarpedido');
-
-    /* Ruta a ventana modal de confirmación del pedido */
     
 
 });
@@ -88,15 +89,12 @@ Route::middleware('auth')->group(function () {
 /* Si entras a la ruta "/carrito" se ejecuta la función carritoIndex del controlador VentaController */
 Route::get('/carrito', 'VentaController@carritoIndex')->name('carrito.index');
 
-
-
 /* RUTAS DE CADA HOME (página principal de cada tipo de usuario al hacer login) */
 /* Ruta que ejecuta la función index (User Home) del HomeController.php */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /* Ruta que ejecuta la función adminHome (Admin Home) del HomeController.php */
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-
 
 /* RUTAS PÚBLICAS EN LA TIENDA */
 /* Si entras a la ruta "/" se ejecuta la función "welcome" del controlador "CamisetaController.php" */
