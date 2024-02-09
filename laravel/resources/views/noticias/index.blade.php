@@ -20,30 +20,32 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mx-auto">
+                <!-- Si existe algún mensaje de tipo 'info' lo mostramos dentro de un "alert" de Bootstrap -->
+                @if(session('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-2 text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong><em>{{ session('info') }}</em></strong>
+                    </div>                     
+                @endif
                 <div class="card">
                     <div class="card-header text-center bg-dark text-white">
                         <strong style="margin-left: 100px;">NOTICIAS</strong>
-                        <a href="{{ route('camisetas.create') }}" class="btn btn-outline-light btn-sm float-end">Nueva Noticia</a>
+                        <a href="{{ route('noticias.create') }}" class="btn btn-outline-light btn-sm float-end">Nueva Noticia</a>
                     </div>
-                    <div class="card-body col table-responsive bg-dark">
-                        <!-- Mostraremos el listado de camisetas en formato tabla -->
-                        <table class="table table-hover table-sm table-dark text-white text-center">
-                            @foreach($noticias as $noticia)
-                                <th class="fs-3" colspan="2">{{ $noticia->titular }}</th>
-                                <tr>
-                                    <td>
-                                        {{ $noticia->cuerpo }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img class="ms-3 mt-2 mb-2" src="{{ asset($noticia->imagen) }}" style="width:250px; border-radius:5px;" alt="Imagen de la camiseta">
-                                    </td>
-                                </tr>
-                                @endforeach 
-                                <hr>
-                            
-                        </table>
+                    <div class="card-body col table-responsive bg-dark text-white">
+                        <!-- Mostraremos el listado de noticias -->
+                        @foreach($noticias as $noticia)
+                            <div class="text-center">
+                                <img class="ms-3 mt-2 mb-2" src="{{ asset($noticia->imagen) }}" style="width:250px; border-radius:5px;" alt="Imagen de la camiseta">
+                            </div>
+                            <h1>
+                                {{ $noticia->titular }}
+                            </h1>                            
+                            <p>
+                                {{ $noticia->cuerpo }}
+                            </p>
+                            <hr class="text-white   ">
+                        @endforeach 
                     </div>
                 </div>
             </div>

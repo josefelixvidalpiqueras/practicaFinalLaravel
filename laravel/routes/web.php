@@ -71,6 +71,12 @@ Route::middleware('auth')->group(function () {
     /* RUTAS DE NOTICIAS para el usuario ADMINISTRADOR*/
     Route::get('admin/noticias', 'NoticiaController@noticiasIndex')->name('noticias.index')->middleware('is_admin');
 
+    /* Ruta para crear noticias por parte del usuario ADMINISTRADOR*/
+    Route::get('admin/noticias/create', 'NoticiaController@noticiasCreate')->name('noticias.create')->middleware('is_admin');
+     
+    /* Ruta que recoge los campos de formulario introducidos y almacena una nueva Noticia con ellos */
+    Route::post('admin/noticias', 'NoticiaController@noticiasStore')->name('noticias.store')->middleware('is_admin');
+
     /* CLIENTE */
     /* RUTAS DE PERFILES para usuarios CLIENTE */
     /* Ruta a la Vista (blade) del perfil del usuario */
