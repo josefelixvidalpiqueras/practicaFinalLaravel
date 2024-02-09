@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2024 a las 00:58:46
+-- Tiempo de generación: 09-02-2024 a las 10:50:35
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -105,7 +105,31 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2024_02_04_073350_create_camisetas_table', 1),
-(6, '2024_02_04_073409_create_ventas_table', 1);
+(6, '2024_02_04_073409_create_ventas_table', 1),
+(8, '2024_02_09_082203_create_noticias_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `noticias`
+--
+
+DROP TABLE IF EXISTS `noticias`;
+CREATE TABLE `noticias` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `titular` varchar(255) NOT NULL,
+  `cuerpo` varchar(1000) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `noticias`
+--
+
+INSERT INTO `noticias` (`id`, `titular`, `cuerpo`, `imagen`, `created_at`, `updated_at`) VALUES
+(1, 'Nike, la marca número 1 para la Gen Z en ropa y calzado', 'De acuerdo con la 46ª encuesta semestral Taking Stock With Teens de la firma de investigación de equidad Piper Sandler, Nike mantiene su posición como la marca preferida entre el público más joven en los Estados Unidos, tanto en ropa como en calzado.', 'images/NikeLogo.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -235,6 +259,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -284,7 +314,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
