@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-body col table-responsive bg-dark">
                         <!-- Mostraremos el listado de camisetas en formato tabla -->
-                        <table class="table table-hover table-sm table-dark text white">
+                        <table class="table table-hover table-sm table-dark text-white">
                             <thead>
                                 <th>Marca</th>
                                 <th>Modelo</th>

@@ -68,6 +68,9 @@ Route::middleware('auth')->group(function () {
     /* Ruta a la vista (blade) que cambia el estado del pedido al elegido por parte del Administrador en la ruta de edición */
     Route::put('admin/historial/update/{id}', 'HistorialController@historialUpdate')->name('historial.update')->middleware('is_admin');
 
+    /* RUTAS DE NOTICIAS para el usuario ADMINISTRADOR*/
+    Route::get('admin/noticias', 'NoticiaController@noticiasIndex')->name('noticias.index')->middleware('is_admin');
+
     /* CLIENTE */
     /* RUTAS DE PERFILES para usuarios CLIENTE */
     /* Ruta a la Vista (blade) del perfil del usuario */
@@ -92,9 +95,11 @@ Route::middleware('auth')->group(function () {
     /* Si entras a la ruta "/carrito/realizarpedido" se ejecuta la función realizarPedido del controlador VentaController. */
     Route::get('/carrito/realizarpedido', 'VentaController@realizarPedido')->name('carrito.realizarpedido');
 
-    /*RUTAS DE HISTORIAL de pedidos para usuarios CLIENTE */
+    /* RUTAS DE HISTORIAL de pedidos para usuarios CLIENTE */
     /* Ruta a la vista (blade) con el listado del Historial de pedidos de todos los usuarios */
     Route::get('/historial', 'HistorialController@historialClienteIndex')->name('historial.indexCliente');
+
+    /* RUTAS DE NOTICIAS */
 
 });
 
