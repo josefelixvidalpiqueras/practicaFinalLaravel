@@ -9,7 +9,22 @@
                     <div class="card-header text-center" style="background-color: #F1F3F5; color: black; border-color: #343a40;">    
                         <strong>CAMISETAS EN VENTA</strong>
                     </div>
-                    <div class="card-body col table-responsive bg-dark" style="padding-bottom: 43px;">
+                    <div class="card-body col table-responsive bg-dark">
+                        <!-- Filtro aplicable por el usuario antes de reenviar el formulario con el filtro elegido (por defecto sin filtro aplicado) -->
+                        <form method="GET" action="{{ route('welcome-detalles') }}">
+                            <div class="mb-3">
+                                <label for="marca" class="form-label text-light"><em>Filtrar por Marca:</em></label>
+                                <select class="form-select" id="marca" name="marca">
+                                    <option value="">Todas las Marcas</option>
+                                    <option value="Nike">Nike</option>
+                                    <option value="Adidas">Adidas</option>
+                                    <option value="Vans">Vans</option>
+                                    <option value="Puma">Puma</option>
+                                    <!-- Agregar más opciones según las marcas disponibles -->
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-1">Aplicar Filtro</button>
+                        </form>
                         <!-- Mostraremos el listado de camisetas en formato tabla -->
                         <table class="table table-hover table-sm table-dark text white">
                             <thead>

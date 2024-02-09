@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2024 a las 10:50:35
+-- Tiempo de generación: 09-02-2024 a las 19:25:36
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -48,9 +48,9 @@ CREATE TABLE `camisetas` (
 --
 
 INSERT INTO `camisetas` (`id`, `marca`, `modelo`, `caracteristicas`, `precio`, `stock`, `descuento`, `imagen`, `created_at`, `updated_at`) VALUES
-(1, 'Adidas', 'Classics', 'Camiseta clásica de manga corta.', 33, 10, 0, 'images/AdidasClassics.jpg', '2024-02-04 13:38:34', '2024-02-04 13:41:06'),
+(1, 'Adidas', 'Classics', 'Camiseta clásica de manga corta.', 33, 10, 0, 'images/AdidasClassics.jpg', '2024-02-04 13:38:34', '2024-02-09 16:50:59'),
 (3, 'Adidas', 'Premium', 'Camisa elegante de manga corta.', 100, 4, 15, 'images/AdidasPremium.jpg', '2024-02-04 13:42:28', '2024-02-08 22:51:17'),
-(4, 'Adidas', 'Graphic', 'Camiseta violeta de manga corta.', 38, 15, 20, 'images/AdidasGraphic.jpg', '2024-02-04 17:57:30', '2024-02-04 17:57:30'),
+(4, 'Adidas', 'Graphic', 'Camiseta violeta de manga corta.', 38, 13, 20, 'images/AdidasGraphic.jpg', '2024-02-04 17:57:30', '2024-02-09 17:00:52'),
 (5, 'Adidas', 'SST', 'Camiseta gris oversized de manga corta.', 38, 1, 25, 'images/AdidasSST.jpg', '2024-02-04 18:01:10', '2024-02-04 18:01:10'),
 (6, 'Nike', 'Hyverse', 'Camiseta de diseño azul.', 42.99, 0, 0, 'images/NikeHyverse.jpg', '2024-02-04 18:12:34', '2024-02-04 18:12:34'),
 (7, 'Nike', 'Jordan', 'Camiseta para niño estilo Jordan.', 24.99, 2, 5, 'images/NikeJordan.jpg', '2024-02-04 18:15:04', '2024-02-08 18:05:46'),
@@ -60,9 +60,9 @@ INSERT INTO `camisetas` (`id`, `marca`, `modelo`, `caracteristicas`, `precio`, `
 (11, 'Puma', 'TheJoker', 'Edición especial TheJoker de manga corta.', 35, 10, 10, 'images/PumaTheJoker.jpg', '2024-02-04 18:29:26', '2024-02-04 18:29:26'),
 (12, 'Puma', 'Mercedes', 'Edición especial Puma x Mercedes.', 30.95, 6, 10, 'images/PumaMercedes.jpg', '2024-02-05 13:34:28', '2024-02-05 13:34:28'),
 (13, 'Puma', 'Basket', 'Camisa diseño basket de manga corta.', 20.95, 0, 0, 'images/PumaBasket.jpg', '2024-02-05 13:45:52', '2024-02-05 13:45:52'),
-(14, 'Vans', 'Disney', 'Camiseta de manga corta edición Disney.', 40, 6, 30, 'images/1707435387.jpg', '2024-02-08 22:36:27', '2024-02-08 22:51:17'),
+(14, 'Vans', 'Disney', 'Camiseta de manga corta edición Disney.', 40, 5, 30, 'images/1707435387.jpg', '2024-02-08 22:36:27', '2024-02-09 16:24:55'),
 (15, 'Vans', 'Disney', 'Camiseta de manga corta edición Rock.', 38, 11, 30, 'images/1707435682.jpg', '2024-02-08 22:41:22', '2024-02-08 22:54:31'),
-(16, 'Vans', 'Spidey', 'Camiseta de manga corta edición Spidey.', 38, 6, 50, 'images/1707435740.jpg', '2024-02-08 22:42:20', '2024-02-08 22:42:20'),
+(16, 'Vans', 'Spidey', 'Camiseta de manga corta edición Spidey.', 38, 5, 50, 'images/1707435740.jpg', '2024-02-08 22:42:20', '2024-02-09 15:53:13'),
 (17, 'Vans', 'Voltage', 'Camiseta de manga corta edición Voltage.', 38, 30, 0, 'images/1707435810.jpg', '2024-02-08 22:43:30', '2024-02-08 22:43:30');
 
 -- --------------------------------------------------------
@@ -129,7 +129,9 @@ CREATE TABLE `noticias` (
 --
 
 INSERT INTO `noticias` (`id`, `titular`, `cuerpo`, `imagen`, `created_at`, `updated_at`) VALUES
-(1, 'Nike, la marca número 1 para la Gen Z en ropa y calzado', 'De acuerdo con la 46ª encuesta semestral Taking Stock With Teens de la firma de investigación de equidad Piper Sandler, Nike mantiene su posición como la marca preferida entre el público más joven en los Estados Unidos, tanto en ropa como en calzado.', 'images/NikeLogo.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 'Nike, la marca número 1 para la Gen Z en ropa y calzado', 'De acuerdo con la 46ª encuesta semestral Taking Stock With Teens de la firma de investigación de equidad Piper Sandler, Nike mantiene su posición como la marca preferida entre el público más joven en los Estados Unidos, tanto en ropa como en calzado.', 'images/NikeLogo.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Adidas, la favorita de los argentinos', 'La firma alemana de indumentaria deportiva encabeza el ranking desde 2019, y superó a su principal competidor, Nike, que en años anteriores llegó a estar en el primer puesto, aunque en esta última edición ocupa el sexto lugar.', 'images/1707493200.jpeg', '2024-02-09 14:40:00', '2024-02-09 14:40:00'),
+(3, 'VANS x DIME', 'Vans Skateboarding se enorgullece de anunciar su colaboración con Dime en una actualización de las Rowley XLT, uno de los modelos de archivo más populares de la marca, y la primera de una Serie de reediciones de los diseños Classics de Vans. El modelo estará disponible en la tienda efímera Vans x Dime Pop-Up, que se inaugurará en París el 29 de septiembre y permanecerá abierta hasta el 1 de octubre de 2023.', 'images/1707493801.jpg', '2024-02-09 14:50:01', '2024-02-09 14:50:01');
 
 -- --------------------------------------------------------
 
@@ -228,12 +230,16 @@ INSERT INTO `ventas` (`id`, `id_camiseta`, `id_user`, `estado`, `precio_venta`, 
 (6, 1, 5, 'En envío', 33, 0, '2024-02-08 16:55:18', '2024-02-08 16:55:18'),
 (7, 10, 5, 'En envío', 30.95, 30, '2024-02-08 16:55:18', '2024-02-08 16:55:18'),
 (8, 10, 5, 'En envío', 30.95, 30, '2024-02-08 16:55:18', '2024-02-08 16:55:18'),
-(9, 9, 3, 'Preparando', 20.97, 45, '2024-02-08 16:59:26', '2024-02-08 16:59:26'),
-(10, 10, 3, 'Preparando', 30.95, 30, '2024-02-08 16:59:26', '2024-02-08 16:59:26'),
+(9, 9, 3, 'En envío', 20.97, 45, '2024-02-08 16:59:26', '2024-02-09 16:58:54'),
+(10, 10, 3, 'En envío', 30.95, 30, '2024-02-08 16:59:26', '2024-02-09 16:59:11'),
 (11, 7, 5, 'Preparando', 24.99, 5, '2024-02-08 18:05:46', '2024-02-08 18:05:46'),
 (12, 14, 5, 'Preparando', 40, 30, '2024-02-08 22:51:17', '2024-02-08 22:51:17'),
 (13, 3, 5, 'Preparando', 100, 15, '2024-02-08 22:51:17', '2024-02-08 22:51:17'),
-(14, 15, 5, 'Preparando', 38, 30, '2024-02-08 22:54:31', '2024-02-08 22:54:31');
+(14, 15, 5, 'Preparando', 38, 30, '2024-02-08 22:54:31', '2024-02-08 22:54:31'),
+(15, 16, 3, 'Preparando', 38, 50, '2024-02-09 15:53:13', '2024-02-09 15:53:13'),
+(16, 14, 3, 'Preparando', 40, 30, '2024-02-09 16:24:55', '2024-02-09 16:24:55'),
+(17, 4, 3, 'Preparando', 38, 20, '2024-02-09 16:24:55', '2024-02-09 16:24:55'),
+(18, 4, 5, 'Preparando', 38, 20, '2024-02-09 17:00:52', '2024-02-09 17:00:52');
 
 --
 -- Índices para tablas volcadas
@@ -320,7 +326,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -338,7 +344,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas

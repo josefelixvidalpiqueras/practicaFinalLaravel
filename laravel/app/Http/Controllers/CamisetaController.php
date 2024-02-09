@@ -26,10 +26,25 @@ class CamisetaController extends Controller
      * Función que muestra el listado con todos los detalles de todas las camisetas en venta.
      * Las camisetas sin stock no se mostrarán en la Tienda.
      * Los clientes (incluso sin autenticar) pueden verla.
+     * Esta función recibe el formulario con los filtros aplicables por el usuario para filtrar las camisetas por marca.
      */
-    public function welcomeDetalles() {
-        $camisetas = DB::table('camisetas')->where('stock', '<>', 0)->get(); /* Almacenamos la consulta que devuelve todos los campos de las 8 Camisetascon mayor descuento. */
-        return view('welcome-detalles', compact('camisetas')); /* Ejecutamos la consulta al recargar la vista */
+    public function welcomeDetalles(Request $request) {
+        // Obtener todas las camisetas
+        $query = DB::table('camisetas')->where('stock', '<>', 0);
+    
+        // Aplicar filtro si se proporciona
+        if ($request->has('marca')) {
+            $marca = $request->input('marca');
+            if ($marca != '') {
+                $query->where('marca', $marca);
+            }
+        }
+    
+        // Obtener los resultados filtrados
+        $camisetas = $query->get();
+    
+        // Pasar los resultados a la vista
+        return view('welcome-detalles', compact('camisetas'));
     }
 
     /**
@@ -95,12 +110,13 @@ class CamisetaController extends Controller
     }
 
     /**
-     * Función que borra la Camiseta de la base de datos.
+     * Función que borra la Camiseta de la base de datos (en realidad sólo deshabilita la camiseta poniendo el stock a 0).
      */
     public function camisetasDestroy($id){
-        $camiseta = Camiseta::findOrFail($id); /* Busca la Camiseta con el id pasasdo por el botón de Eliminar o arroja un fallo */
-        $camiseta -> delete();
-        return redirect()->route('camisetas.index')->with('info', 'Camiseta eliminada con éxito.');
+        $camiseta = Camiseta::findOrFail($id); 
+        $camiseta->stock = 0; // Establecer el stock a cero en lugar de eliminar la camiseta
+        $camiseta->save(); // Guardar los cambios en la base de datos
+        return redirect()->route('camisetas.index')->with('info', $camiseta->marca." ".$camiseta->modelo." ".' deshabilitada en tienda (stock a 0).');
     }
     
     /**

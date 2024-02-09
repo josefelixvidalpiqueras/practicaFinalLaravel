@@ -40,10 +40,11 @@ class HistorialController extends Controller
 
     /* CLIENTE */
     /**
-     * Función que muestra el lisado con el historial de pedidos del usuario CLIENTE logueado.
+     * Función que muestra el lisado con el historial de pedidos del usuario CLIENTE logueado. Los pedidos están ordenados Descendientemente por id para
+     * que aparezcan primero en la lista los pedidos más recientes.
      */
     public function historialClienteIndex() {
-        $ventas = DB::table('ventas')->where('id_user', auth()->user()->id)->get(); /* Consulta de todos los pedidos de del usuario logueado en la tienda */
+        $ventas = DB::table('ventas')->where('id_user', auth()->user()->id)->orderBy('id', 'DESC')->get(); /* Consulta de todos los pedidos de del usuario logueado en la tienda */
         return view('historial.indexCliente', compact('ventas'));
     }
     

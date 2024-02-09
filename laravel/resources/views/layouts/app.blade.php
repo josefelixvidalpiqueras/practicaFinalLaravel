@@ -59,7 +59,7 @@
                                 <div class="nav-item">
                                     <a href="{{ url('/admin/cuentas') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Cuentas</a>
                                 </div>
-                            <!-- Si el usuario logueado es NO es Administrador (se muestra el panel de Cliente) -->        
+                            <!-- Si el usuario logueado NO es Administrador (se muestra el panel de Cliente) -->        
                             <?php
                                 } else {
                             ?>
@@ -71,6 +71,9 @@
                                 </div>
                                 <div class="nav-item">
                                     <a href="{{ url('/historial') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Historial</a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="{{ url('/noticias') }}" class="col-auto btn btn-sm btn-light me-3 d-grid">Noticias</a>
                                 </div>
                             <?php    
                                 }                    

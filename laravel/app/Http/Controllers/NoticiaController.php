@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 class NoticiaController extends Controller
 {    
 
+    /*ADMINISTRADOR */
+
     /**
      * Función que consulta todas las noticias de la base de datos y redirige al usuario a la vista pertinente 
-     * pasandole el resultado de la consulta.
+     * pasandole el resultado de la consulta. Las últimas noticias aparecerán las primeras (arriba).
      */
     public function noticiasIndex() {
-        $noticias = DB::table('noticias')->get(); /* Almacenamos la consulta que devuelve todas las noticias */
+        $noticias = DB::table('noticias')->orderBy('id', 'DESC')->get(); /* Almacenamos la consulta que devuelve todas las noticias */
         return view('noticias.index', compact('noticias')); 
     }
 
@@ -55,4 +57,16 @@ class NoticiaController extends Controller
         return redirect()->route('noticias.index')->with('info', 'Noticia insertada correctamente.'); /* Tras crear la camiseta redirigimos al usuario al listado de Camisetas */
     }
 
+
+    /* CLIENTE */
+    /**
+     * Función que consulta todas las noticias de la base de datos y redirige al usuario a la vista pertinente 
+     * pasandole el resultado de la consulta. Las últimas noticias aparecerán las primeras (arriba).
+     */
+    public function noticiasClienteIndex() {
+        $noticias = DB::table('noticias')->orderBy('id', 'DESC')->get(); /* Almacenamos la consulta que devuelve todas las noticias */
+        return view('noticias.indexCliente', compact('noticias')); 
+    }
+
+    
 }

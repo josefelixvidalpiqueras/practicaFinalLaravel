@@ -68,7 +68,11 @@ Route::middleware('auth')->group(function () {
     /* Ruta a la vista (blade) que cambia el estado del pedido al elegido por parte del Administrador en la ruta de edición */
     Route::put('admin/historial/update/{id}', 'HistorialController@historialUpdate')->name('historial.update')->middleware('is_admin');
 
+    /* Ruta a la vista (blade) con el listado del Historial de pedidos personal del usuario ADMINISTRADOR */
+    Route::get('/admin/historialpersonal', 'HistorialController@historialClienteIndex')->name('historial.indexAdmin');
+
     /* RUTAS DE NOTICIAS para el usuario ADMINISTRADOR*/
+    /* Ruta que muestra el listado de noticias con la capacidad para añadir nuevas noticias por parte del usuario ADMINISTRADOR*/
     Route::get('admin/noticias', 'NoticiaController@noticiasIndex')->name('noticias.index')->middleware('is_admin');
 
     /* Ruta para crear noticias por parte del usuario ADMINISTRADOR*/
@@ -102,11 +106,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/carrito/realizarpedido', 'VentaController@realizarPedido')->name('carrito.realizarpedido');
 
     /* RUTAS DE HISTORIAL de pedidos para usuarios CLIENTE */
-    /* Ruta a la vista (blade) con el listado del Historial de pedidos de todos los usuarios */
+    /* Ruta a la vista (blade) con el listado del Historial de pedidos personal del usuario CLIENTE */
     Route::get('/historial', 'HistorialController@historialClienteIndex')->name('historial.indexCliente');
 
-    /* RUTAS DE NOTICIAS */
-
+    /* RUTAS DE NOTICIAS para el usuario CLIENTE*/
+    /* Ruta que muestra el listado de todas las noticias al usuario CLIENTE. */
+    Route::get('noticias', 'NoticiaController@noticiasClienteIndex')->name('noticiasCliente.index');
 });
 
 

@@ -77,8 +77,8 @@
                                     </td>                                        
                                     <td class="btn-group float-end">
                                         <a href="{{ route('camisetas.edit', $camiseta->id) }}" class="btn btn-outline-warning btn-sm border border-1 border-ligth">Editar</a>       
-                                        <a href="javascript: document.getElementById('delete-{{$camiseta->id}}').submit()" class="btn btn-outline-danger btn-sm border border-1 border-ligth" style="border-radius: 0px 5px 5px 0px;">Eliminar</a>
-                                        <form id="delete-{{$camiseta->id}}" action="{{ route('camisetas.destroy', $camiseta->id) }}" method="POST">
+                                        <a href="javascript: document.getElementById('disable-{{$camiseta->id}}').submit()" class="btn btn-outline-danger btn-sm border border-1 border-ligth" style="border-radius: 0px 5px 5px 0px;">Deshabilitar</a>
+                                        <form id="disable-{{$camiseta->id}}" action="{{ route('camisetas.destroy', $camiseta->id) }}" method="POST">
                                             @method('delete')
                                             @csrf
                                         </form>

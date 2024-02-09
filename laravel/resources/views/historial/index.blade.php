@@ -36,6 +36,7 @@
                 <div class="card">
                     <div class="card-header text-center bg-dark text-white">
                         <strong>HISTORIAL DE PEDIDOS</strong>
+                        <a href="{{ route('historial.indexAdmin', auth()->user()->id) }}" class="btn btn-sm btn-outline-light float-end">Historial personal</a>
                     </div>
                     <div class="card-body col table-responsive bg-dark">
                         <!-- Mostraremos el listado de datos del usuario en formato tabla -->

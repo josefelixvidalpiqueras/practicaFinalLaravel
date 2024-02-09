@@ -1,6 +1,9 @@
 @extends('layouts.enlaces-tienda')
 @section('contenido')
-    
+
+    <!-- Script de Bootstrap para que funcione la modal -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <style type="text/css">		
         img {
             border-radius: 10px;
@@ -132,7 +135,7 @@
 
                             <div class="col-auto ms-auto text-white mt-2 d-none d-md-block" style="margin-right: 80px; font-style: italic;">Descuentos aplicados *</div>
                             <!-- Botón que realiza el pedido (acción de comprar las camisetas del carrito) --> 
-                            <a href="{{ route('carrito.realizarpedido') }}" class="col-10 mx-auto d-grid btn btn-light mt-2"><strong>Realizar pedido</strong></a>
+                            <a id="realizarPedidoButton" href="#" class="col-10 mx-auto d-grid btn btn-light mt-2" data-bs-toggle="modal" data-bs-target="#myModal"><strong>Realizar pedido</strong></a>
 
                         </div>      
                         
@@ -141,11 +144,11 @@
                                 <strong class="bg-light text-dark p-1 pe-1" style="border-radius: 5px;"><em>Dirección de envío:</em></strong>&nbsp; {{ auth()->user()->direccion }}
                             </div>
                             <div class="col-3 offset-6 mt-3 text-end">
-                                <input title="Contrareembolso" type="radio" id="efectivo" name="metodopago" value="tarjeta">
+                                <input title="Contrareembolso" type="radio" id="efectivo" name="metodopago" value="contrareembolso" disabled>
                                 <label title="Contrareembolso" for="efectivo">Efectivo</label>
                             </div>
                             <div class="col-3 mt-3">
-                                <input title="Pago con tarjeta" type="radio" id="tarjeta" name="metodopago" value="tarjeta">
+                                <input title="Pago con tarjeta" type="radio" id="tarjeta" name="metodopago" value="tarjeta" checked>
                                 <label title="Pago con tarjeta" for="tarjeta">Tarjeta</label>
                             </div>
                         </div>
@@ -156,4 +159,67 @@
             </div>
         </div>
     </div>
+
+    <!-- Ventana modal de pago con tarjeta -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pagar con tarjeta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="cardNumber"> Número de tarjeta</label>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName"> Nombre en la tarjeta</label>
+                            <input type="text" class="form-control" id="cardName" placeholder="{{ auth()->user()->name }}" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="expiryDate"> Fecha de vencimiento</label>
+                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="cvv"> CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                            </div>
+                        </div>
+                        <!-- Imagen de la tarjeta -->
+                        <div class="text-center">
+                            <img src="images/PagoConTarjeta.jpg" alt="Tarjeta de crédito" style="width: 150px; position: absolute; top: 150px; left: 300px;" >
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a href="{{ route('carrito.realizarpedido') }}" class="btn btn-dark">Confirmar pedido</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana modal de pago en efectivo -->
+    <div class="modal fade" id="modalEfectivo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pagar en efectivo (contrareembolso)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Puedes pagar en efectivo al recibir el pedido (contrareembolso).</p>
+                    <p>El importe exacto deberá estar disponible al momento de la entrega.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a href="{{ route('carrito.realizarpedido') }}" class="btn btn-dark">Confirmar pedido</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
